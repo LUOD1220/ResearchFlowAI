@@ -1,7 +1,7 @@
 [Setup]
 AppId={{E7379C9C-846A-49AB-A5AA-4B9A221A271F}
 AppName=ResearchFlow AI
-AppVersion=0.3.0-beta
+AppVersion=0.3.2-beta
 AppPublisher=ResearchFlow AI Beta
 DefaultDirName={localappdata}\Programs\ResearchFlowAI
 DefaultGroupName=ResearchFlow AI

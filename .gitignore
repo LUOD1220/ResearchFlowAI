@@ -1,0 +1,51 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated application builds; publish installers through GitHub Releases
+/build/
+/dist/
+/.build-macos/
+/release-macos/
+/release-windows/
+*.spec
+*.exe
+*.dmg
+*.app/
+*.zip
+
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+!*.example.env
+*.pem
+*.key
+*.p12
+*.pfx
+/secrets/
+/credentials/
+
+# Runtime settings, diagnostics, and local test output
+settings.json
+diagnostics.log*
+*.log
+/reports/
+/test-results/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*~
+*.swp

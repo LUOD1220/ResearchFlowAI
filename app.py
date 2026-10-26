@@ -86,7 +86,7 @@ class App:
         setup_canvas.bind('<Configure>', resize_setup)
         self.setup_page = setup_page
         self.book.add(self.work, text='翻译 / 润色 / 纠错 / 解释')
-        self.book.add(setup_page, text='首次配置与诊断')
+        self.book.add(setup_page, text='模型设置与诊断')
         self.preferences_page = ttk.Frame(self.book)
         pref_canvas = tk.Canvas(self.preferences_page, highlightthickness=0)
         pref_scroll = ttk.Scrollbar(self.preferences_page, orient='vertical', command=pref_canvas.yview)
@@ -211,7 +211,7 @@ class App:
         ttk.Label(self.setup, text='日志只记录事件代码与时间，不记录原文、结果、密钥或服务器响应。\n'
             '关闭窗口会退出；隐藏后仍在托盘运行。卸载本助手不会删除共享 Ollama 或模型。',
             wraplength=760, justify='left').pack(anchor='w', pady=12)
-        self.status = tk.StringVar(value='就绪。请选择原文后使用上方快捷键，或粘贴到输入框。' if self.config.get('configured') else '请先在“首次配置与诊断”中完成配置。')
+        self.status = tk.StringVar(value='就绪。请选择原文后使用上方快捷键，或粘贴到输入框。' if self.config.get('configured') else '请先在“模型设置与诊断”中完成配置。')
         footer = ttk.Frame(outer)
         footer.pack(side='bottom', fill='x')
         status_label = ttk.Label(footer, textvariable=self.status, wraplength=810)
@@ -344,6 +344,8 @@ class App:
             self.hide()
 
     def show(self, popup=False):
+        if self.config.get('configured'):
+            self.book.select(self.work)
         self.popup_mode = popup
         self.ignore_hide_until = time.monotonic() + .7
         self.root.deiconify()
@@ -440,7 +442,7 @@ class App:
         self.result_ready = False
         self.result_target = None
         target = dict(self.source_target) if self.source_target and same_text(raw_text, self.source_target['original']) else None
-        self.status.set('正在生成；首次加载模型可能较慢…')
+        self.status.set('正在生成，请稍候…')
         def run():
             last = [0]
             def stream(value):

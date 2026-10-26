@@ -13,6 +13,20 @@ import macos_support
 
 
 class PortableTests(unittest.TestCase):
+    def test_polish_language_drift_retry(self):
+        source = 'May I ask the time about next midterm and the final exam for CHM 1311F, cause I maybe leave ottawa for three weeks, I can arrange my time reasonably according to the TA working time.'
+        polish = 'Miejsce, czy chcesz powiedzieć o czasach z czwartej medyzy i z egzaminu, co wypłynąć, jeśli chcesz zastąpić wodzę w trzech zmiennikach.'
+        good = 'Could you let me know when the next midterm and final exam for CHM 1311F will take place? I may be away from Ottawa for three weeks, so I would like to plan my schedule around the TA working hours.'
+        self.assertTrue(tasks.obvious_language_drift(source, polish))
+        self.assertFalse(tasks.obvious_language_drift(source, good))
+        with patch('tasks.infer', side_effect=[polish, good]) as infer, patch('tasks.event'):
+            self.assertEqual(tasks.run_task({}, 'polish', source, '', threading.Event()), good)
+            self.assertEqual(infer.call_count, 2)
+            self.assertIsNone(infer.call_args_list[0].args[4])
+        with patch('tasks.infer', return_value=polish), patch('tasks.event'):
+            with self.assertRaises(core.FlowError):
+                tasks.run_task({}, 'polish', source, '', threading.Event())
+
     def test_plain_explanation(self):
         raw = '**解释内容： **\n\n**摘要说明：**\n普通段落，**关键术语**。\n### 示例\n解释。'
         actual = tasks.plain_explanation(raw)

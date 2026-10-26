@@ -18,7 +18,7 @@ from functools import lru_cache
 
 from catalog import MODEL_CATALOG, provider_for_url, normalize_base_url
 
-VERSION = '0.3.0-beta'
+VERSION = '0.3.2-beta'
 IS_MAC = sys.platform == 'darwin'
 OS_NAME = 'macOS' if IS_MAC else 'Windows'
 LOCAL_URL = 'http://127.0.0.1:11434'

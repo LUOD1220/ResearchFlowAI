@@ -92,3 +92,8 @@ Windows x64 + Python 3.13，安装 requirements.txt，使用 Inno Setup 6.7.3。
 - [Llama3.2 模型大小](https://ollama.com/library/llama3.2/tags)
 - [Ollama Windows](https://docs.ollama.com/windows)
 
+
+
+## 0.3.2-beta 编辑结果检查
+
+润色保留原语言；对较长英文/中文段落加入保守的明显语言偏离检查，失败最多重试一次，仍失败则阻止复制和替换。该检查不是完整语言识别或语义校验，短句、混合语言及细微改意仍可能漏检。小模型的润色结果需要人工核对。
