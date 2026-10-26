@@ -1,0 +1,5 @@
+PyAutoGUI==0.9.54
+pyperclip==1.11.0
+PyInstaller==6.22.3
+pystray==0.19.5
+Pillow==13.0.0

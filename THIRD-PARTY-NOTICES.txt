@@ -1,0 +1,21 @@
+ResearchFlow AI Beta bundles the Python runtime and Tcl/Tk via PyInstaller.
+Python: Python Software Foundation License; https://docs.python.org/3/license.html
+Tcl/Tk: Tcl/Tk BSD-style licenses; https://www.tcl.tk/software/tcltk/license.html
+PyAutoGUI 0.9.54: BSD-3-Clause; https://github.com/asweigart/pyautogui
+pyperclip 1.11.0: BSD-3-Clause; https://github.com/asweigart/pyperclip
+PyAutoGUI dependencies: PyGetWindow, PyRect, PyMsgBox, MouseInfo, PyScreeze,
+PyTweening: see licenses/ and the respective package metadata.
+PyInstaller 6.22.3: GPL v2 or later with bootloader exception permitting
+distribution of bundled applications under other terms; https://pyinstaller.org
+Inno Setup 6.7.3: https://jrsoftware.org/files/is/license.txt
+Ollama is NOT bundled: downloaded separately from the official vendor only
+when local provisioning needs it. Its license and model licenses apply
+independently. DeepSeek-R1 distilled model variants may include upstream
+Qwen/Llama terms; review the selected tag's license before public distribution.
+No third-party model weights are redistributed in this installer.
+User's original source is retained under provenance/; ownership remains with
+its respective authors. No third-party API credentials are included.
+
+New in 0.2.0: pystray 0.19.5 (LGPL-3.0), Pillow 13.0.0 (MIT-CMU), six 1.17.0 (MIT). Full third-party notices are in licenses/. pystray Python sources are included as third-party-source/ for the LGPL component.
+
+Mac build adds PyObjC (MIT) and pynput (LGPLv3). The Mac builder collects installed dependency licenses and pynput source into the application. See requirements-macos.txt and the generated build-dependencies.txt for exact versions. No Mac binaries are distributed by this Windows build.

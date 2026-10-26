@@ -1,0 +1,7 @@
+PyAutoGUI==0.9.54
+pyperclip==1.11.0
+PyInstaller==6.22.3
+pynput>=1.7.8,<2
+pyobjc-framework-Cocoa>=11,<13
+pyobjc-framework-Quartz>=11,<13
+pyobjc-framework-ApplicationServices>=11,<13
