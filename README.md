@@ -61,26 +61,6 @@ Key 只在本次进程内存中保存；不写设置或诊断日志，退出需�
 
 若托盘和快捷键均未就绪，程序会拒绝隐藏，避免无法重新打开。卸载会删除指向本安装路径的 ResearchFlow AI 开机启动项。
 
-## 日志、卸载与边界
-
-设置和轮转诊断日志：%LOCALAPPDATA%\ResearchFlowAI。日志仅记录时间与白名单事件代码，不包含原文、生成结果、密钥或服务器响应，无遥测。Ollama 自身日志由它独立管理，不在本助手的日志隐私保证范围内。
-
-Windows“已安装的应用”可卸载助手。不会删除共享 Ollama 或模型，也不清除用户配置文件；需要完全清理时，退出后自行删除上述 ResearchFlowAI 数据目录。用户原 DeepSeekAssistant 项目不受本次交付旧版清理影响。
-
-输入最多 12,000 字符，模型上下文为 4096 token，建议长文分段。仅对已验证的 Qwen3 架构 R1 8B 复用快速正文输出；1.5B 和其他模板按原生方式推理。模型输出不保证事实、统计解释、术语和引文准确。达到输出长度上限会明确失败，不启用一键替换。
-
-本 Beta 未进行发布者代码签名，可能被 SmartScreen 或安全软件提示。其他电脑、不同权限应用、不同缩放、真实云端和首次全新环境部署仍需试装；不能保证所有设备 100% 成功。
-
-## 开发与验证
-
-Windows x64 + Python 3.13，安装 requirements.txt，使用 Inno Setup 6.7.3。源码目录执行 build.ps1 -InnoCompiler <ISCC.exe绝对路径>，安装包输出上一级；开发环境依赖不需要试装用户自行安装。
-
-- python tests.py：引擎、设置、模型目录和 Windows 集成逻辑检查，外部键盘操作及注册表调用使用模拟。
-- python ui_checks.py report.json：无网络、无外部键盘注入的界面组件检查。
-- ResearchFlowAI.exe --self-test report.json：冻结运行时、Tk、托盘依赖、硬件和四种提示词自检。
-
-溯源原文位于 provenance/，不参与执行。prompts.py 沿用并调整原项目提示词，纠错改为只输出修正文；core.py 管理部署、推理和日志；catalog.py 管理供应商与模型；windows_integration.py 管理选区/替换及启动项；app.py 管理界面、快捷键、托盘和隐藏。
-
 ## 官方参考（2026-10-25 查询）
 
 - [DeepSeek API](https://api-docs.deepseek.com/)
